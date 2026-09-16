@@ -173,29 +173,21 @@
   h2 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 16px; color: var(--field); letter-spacing: -0.005em; }
   p { line-height: 1.7; font-size: 16px; margin: 0 0 14px; color: var(--charcoal); }
 
-  .gallery-section { padding: 48px 32px; }
-  .gallery-section h2 { max-width: 900px; margin-left: auto; margin-right: auto; }
+  .gallery-section { padding: 64px 24px; }
+  .gallery-section h2 { max-width: 1400px; margin: 0 auto 8px; font-size: 26px; }
+  .gallery-sub { max-width: 1400px; margin: 0 auto 28px; color: var(--charcoal-dim); font-size: 15px; }
   .gallery {
     max-width: 1400px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 170px;
-    grid-auto-flow: dense;
-    gap: 8px;
+    column-count: 4;
+    column-gap: 14px;
   }
-  .gallery a { display: block; overflow: hidden; border-radius: 10px; position: relative; grid-column: span 1; grid-row: span 1; }
-  .gallery a.wide { grid-column: span 2; }
-  .gallery a.tall { grid-row: span 2; }
-  .gallery a.big { grid-column: span 2; grid-row: span 2; }
-  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s ease; }
-  .gallery a:hover img { transform: scale(1.04); }
-  @media (max-width: 700px) {
-    .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
-    .gallery a.tall { grid-row: span 1; }
-    .gallery a.wide, .gallery a.big { grid-column: span 2; }
-    .gallery a.big { grid-row: span 1; }
-  }
+  .gallery a { display: block; break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom: 14px; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px -10px rgba(10,20,40,0.35); }
+  .gallery img { width: 100%; height: auto; display: block; transition: transform 0.3s ease; }
+  .gallery a:hover img { transform: scale(1.03); }
+  @media (max-width: 1000px) { .gallery { column-count: 3; } }
+  @media (max-width: 700px) { .gallery { column-count: 2; column-gap: 10px; } .gallery a { margin-bottom: 10px; border-radius: 9px; } }
+  @media (max-width: 420px) { .gallery { column-count: 1; } }
 
   .video-card {
     background: linear-gradient(145deg, #ffffff, #fafbfc);
@@ -291,13 +283,30 @@
 
 <section class="gallery-section">
   <h2>Gallery</h2>
+  <p class="gallery-sub">22 photos from Noah's 2026 season.</p>
   <div class="gallery">
-    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" target="_blank" class="big"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" alt="Noah Deason making contact at the plate"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" alt="Noah Deason making contact at the plate"></a>
     <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-stance-closeup.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-stance-closeup.jpg" alt="Noah Deason batting stance close-up"></a>
     <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-night-slide.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-night-slide.jpg" alt="Noah Deason sliding into second base"></a>
-    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" target="_blank" class="wide"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" alt="Klein Collins team gathered on the field"></a>
-    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" target="_blank" class="wide"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Teammates under the Tiger Field scoreboard at night"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" alt="Klein Collins team gathered on the field"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Teammates under the Tiger Field scoreboard at night"></a>
     <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-sprint-fistpump.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-sprint-fistpump.jpg" alt="Noah Deason sprinting the bases with a fist pump"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-running-bases.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-running-bases.jpg" alt="Noah Deason sprinting toward home plate"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-batflip-run.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-batflip-run.jpg" alt="Noah Deason running out a hit"></a>
+    <a href="images/g-new-walkoff-wide.jpg" target="_blank"><img src="images/g-new-walkoff-wide.jpg" alt="Klein Collins team sprinting in to celebrate a walk-off win"></a>
+    <a href="images/g-new-celebration-jump.jpg" target="_blank"><img src="images/g-new-celebration-jump.jpg" alt="Teammates celebrating with drinks in the air after a win"></a>
+    <a href="images/g-new-dugout-smile.jpg" target="_blank"><img src="images/g-new-dugout-smile.jpg" alt="Noah Deason smiling with teammates in the dugout"></a>
+    <a href="images/g-new-pregame-highfive.jpg" target="_blank"><img src="images/g-new-pregame-highfive.jpg" alt="Noah Deason and coach greeting teammates before a game"></a>
+    <a href="images/g-new-slide-day.jpg" target="_blank"><img src="images/g-new-slide-day.jpg" alt="Noah Deason sliding into second base during a day game"></a>
+    <a href="images/g-new-slide-night.jpg" target="_blank"><img src="images/g-new-slide-night.jpg" alt="Noah Deason sliding into a base at night"></a>
+    <a href="images/g-new-stance-vertical.jpg" target="_blank"><img src="images/g-new-stance-vertical.jpg" alt="Noah Deason in his batting stance, bat raised"></a>
+    <a href="images/g-new-stance-golden.jpg" target="_blank"><img src="images/g-new-stance-golden.jpg" alt="Noah Deason in his batting stance in golden-hour light"></a>
+    <a href="images/g-new-contact-moment.jpg" target="_blank"><img src="images/g-new-contact-moment.jpg" alt="Noah Deason making contact, ball in flight"></a>
+    <a href="images/g-new-roadgame-bearkats.jpg" target="_blank"><img src="images/g-new-roadgame-bearkats.jpg" alt="Noah Deason at bat during a road game"></a>
+    <a href="images/g-new-roadgame-away.jpg" target="_blank"><img src="images/g-new-roadgame-away.jpg" alt="Noah Deason at bat during an away game"></a>
+    <a href="images/g-new-teammates-plate.jpg" target="_blank"><img src="images/g-new-teammates-plate.jpg" alt="Noah Deason and a teammate at home plate"></a>
+    <a href="images/g-new-clap-second.jpg" target="_blank"><img src="images/g-new-clap-second.jpg" alt="Noah Deason clapping after reaching second base"></a>
+    <a href="images/g-new-slide-infielder.jpg" target="_blank"><img src="images/g-new-slide-infielder.jpg" alt="Noah Deason sliding into a base as the infielder covers"></a>
   </div>
 </section>
 
