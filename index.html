@@ -560,11 +560,67 @@
   </div>
 </footer>
 
+<script defer src="/_vercel/insights/script.js"></script>
+<script>
+  // Layer 3: campaign source capture (?src=...), no PII
+  var noahSrc = (function() {
+    try {
+      var p = new URLSearchParams(window.location.search).get('src');
+      return p ? p.slice(0, 60) : undefined;
+    } catch (e) { return undefined; }
+  })();
+  // Layer 2: recruiting event helper -- fires via window.va, no personal data ever included
+  function noahTrack(name, extra) {
+    try {
+      var data = extra ? Object.assign({}, extra) : {};
+      if (noahSrc) { data.src = noahSrc; }
+      if (window.va) { window.va('event', { name: name, data: data }); }
+    } catch (e) { /* analytics must never break the page */ }
+  }
+  document.addEventListener('DOMContentLoaded', function() {
+    // gallery_engagement
+    document.querySelectorAll('.gallery a').forEach(function(a) {
+      a.addEventListener('click', function() { noahTrack('gallery_engagement'); });
+    });
+    // x_click -- follow CTAs and the @noahdeason22 link, not the individual video-source links (those are video_play)
+    document.querySelectorAll('.hero-x-link, .x-follow-band a, .video-card a.btn').forEach(function(a) {
+      a.addEventListener('click', function() { noahTrack('x_click'); });
+    });
+    // email_click -- Noah's own contact email in the footer
+    document.querySelectorAll('footer a[href^="mailto:noahrdeason1"]').forEach(function(a) {
+      a.addEventListener('click', function() { noahTrack('email_click'); });
+    });
+    // phone_click -- Noah's own contact number in the footer
+    document.querySelectorAll('footer a[href^="tel:"]').forEach(function(a) {
+      a.addEventListener('click', function() { noahTrack('phone_click'); });
+    });
+    // wildcatters_click -- footer Wildcatters logo link
+    document.querySelectorAll('footer a[href*="wildcattersbaseball.org"]').forEach(function(a) {
+      a.addEventListener('click', function() { noahTrack('wildcatters_click'); });
+    });
+    // references_view -- fire once when the References section enters view
+    var refSection = document.querySelector('.references-section');
+    if (refSection && window.IntersectionObserver) {
+      var seen = false;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !seen) {
+            seen = true;
+            noahTrack('references_view');
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      io.observe(refSection);
+    }
+  });
+</script>
 <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 <script async src="https://www.instagram.com/embed.js"></script>
 <script>
 function openVideoModal(evt, type, url) {
   evt.preventDefault();
+  if (typeof noahTrack === 'function') { noahTrack('video_play', { source: type }); }
   var modal = document.getElementById('video-modal');
   var content = document.getElementById('video-modal-content');
   var fallback = document.getElementById('video-modal-fallback-link');
