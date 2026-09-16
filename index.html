@@ -160,6 +160,21 @@
     text-shadow: 0 2px 10px rgba(0,0,0,0.5);
   }
 
+  .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 18px; }
+  .video-grid .featured-video { height: 210px; margin-top: 0; }
+  .video-grid-wrap { position: relative; z-index: 2; margin-top: 32px; }
+  @media (max-width: 700px) { .video-grid { grid-template-columns: 1fr; } }
+
+  .video-modal { display: none; position: fixed; inset: 0; z-index: 50; align-items: center; justify-content: center; padding: 20px; }
+  .video-modal.open { display: flex; }
+  .video-modal-backdrop { position: absolute; inset: 0; background: rgba(5,10,25,0.82); }
+  .video-modal-box { position: relative; z-index: 1; background: var(--chalk); border-radius: 14px; max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+  .video-modal-close { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; color: var(--charcoal-dim); }
+  .video-modal-close:hover { color: var(--field); }
+  .video-modal-content { min-height: 120px; }
+  .video-modal-fallback { margin: 14px 0 0; font-size: 13px; text-align: center; color: var(--charcoal-dim); }
+  .video-modal-fallback a { color: var(--field-2); font-weight: 600; }
+
 
   .profile { padding-top: 64px; padding-bottom: 8px; }
   .profile-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 40px; align-items: center; }
@@ -333,8 +348,9 @@
 <main class="col">
   <section>
     <h2>Watch Noah Play</h2>
-    <div class="featured-video-wrap" style="margin-top:0;">
-      <a class="featured-video" href="https://www.instagram.com/p/DWFzHQ3kpzs/" target="_blank" rel="noopener">
+    <div class="video-grid-wrap">
+      <div class="video-grid">
+      <a class="featured-video" href="https://www.instagram.com/p/DWFzHQ3kpzs/" target="_blank" rel="noopener" onclick="return openVideoModal(event,'instagram','https://www.instagram.com/p/DWFzHQ3kpzs/')">
         <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Klein Collins Tiger Field at night" class="featured-video-thumb">
         <div class="featured-video-overlay"></div>
         <div class="featured-video-play">
@@ -342,37 +358,80 @@
         </div>
         <div class="featured-video-caption">
           <span class="featured-video-eyebrow">Watch</span>
-          <span class="featured-video-title">The Walk-Off &mdash; Season-Defining Win</span>
+          <span class="featured-video-title">The Walk-Off — Season-Defining Win</span>
         </div>
       </a>
+      <a class="featured-video" href="https://x.com/NoahDeason22/status/2035052092675825761" target="_blank" rel="noopener" onclick="return openVideoModal(event,'x','https://x.com/NoahDeason22/status/2035052092675825761')">
+        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Klein Collins Tiger Field at night" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">Walk-Off Hit Seals District Win</span>
+        </div>
+      </a>
+      <a class="featured-video" href="https://x.com/NoahDeason22/status/1894215015764209886" target="_blank" rel="noopener" onclick="return openVideoModal(event,'x','https://x.com/NoahDeason22/status/1894215015764209886')">
+        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" alt="Noah Deason making contact at the plate" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">Ripping a Double vs. Cy Woods</span>
+        </div>
+      </a>
+      <a class="featured-video" href="https://x.com/NoahDeason22/status/2032679424714232311" target="_blank" rel="noopener" onclick="return openVideoModal(event,'x','https://x.com/NoahDeason22/status/2032679424714232311')">
+        <img src="images/g-new-contact-moment.jpg" alt="Noah Deason making contact, ball in flight" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">Battling Back: Two-Strike Liner &amp; Sac Bunt</span>
+        </div>
+      </a>
+      <a class="featured-video" href="https://x.com/NoahDeason22/status/2052561639719727514" target="_blank" rel="noopener" onclick="return openVideoModal(event,'x','https://x.com/NoahDeason22/status/2052561639719727514')">
+        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-stance-closeup.jpg" alt="Noah Deason batting stance close-up" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">Locked In: Clean Line-Drive Single</span>
+        </div>
+      </a>
+      <a class="featured-video" href="https://x.com/NoahDeason22/status/2073880449387024766" target="_blank" rel="noopener" onclick="return openVideoModal(event,'x','https://x.com/NoahDeason22/status/2073880449387024766')">
+        <img src="images/g-new-roadgame-away.jpg" alt="Noah Deason at bat during an away game" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">Game-Changing Speed: 3.53 Home to Third</span>
+        </div>
+      </a>
+      </div>
     </div>
-    <div class="video-list" style="margin-top:18px;">
-      <a class="video-item" href="https://x.com/NoahDeason22/status/2035052092675825761" target="_blank" rel="noopener">
-        <span class="video-item-title">Walk-Off Hit Seals District Win</span>
-        <span class="video-item-arrow">&rarr;</span>
-      </a>
-      <a class="video-item" href="https://x.com/NoahDeason22/status/1894215015764209886" target="_blank" rel="noopener">
-        <span class="video-item-title">Ripping a Double vs. Cy Woods</span>
-        <span class="video-item-arrow">&rarr;</span>
-      </a>
-      <a class="video-item" href="https://x.com/NoahDeason22/status/2032679424714232311" target="_blank" rel="noopener">
-        <span class="video-item-title">Battling Back: Two-Strike Liner &amp; Sac Bunt</span>
-        <span class="video-item-arrow">&rarr;</span>
-      </a>
-      <a class="video-item" href="https://x.com/NoahDeason22/status/2052561639719727514" target="_blank" rel="noopener">
-        <span class="video-item-title">Locked In: Clean Line-Drive Single</span>
-        <span class="video-item-arrow">&rarr;</span>
-      </a>
-      <a class="video-item" href="https://x.com/NoahDeason22/status/2073880449387024766" target="_blank" rel="noopener">
-        <span class="video-item-title">Game-Changing Speed: 3.53 Home to Third</span>
-        <span class="video-item-arrow">&rarr;</span>
-      </a>
-    </div>
-    <div class="video-card" style="margin-top:12px;">
+    <div class="video-card" style="margin-top:18px;">
       <p>More game film posted regularly on Noah's Twitter.</p>
       <a class="btn" href="https://twitter.com/noahdeason22" target="_blank" rel="noopener">@noahdeason22</a>
     </div>
   </section>
+
+  <div id="video-modal" class="video-modal">
+    <div class="video-modal-backdrop" onclick="closeVideoModal()"></div>
+    <div class="video-modal-box">
+      <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close">&times;</button>
+      <div id="video-modal-content" class="video-modal-content"></div>
+      <p class="video-modal-fallback">Trouble viewing? <a id="video-modal-fallback-link" href="#" target="_blank" rel="noopener">Watch on the original post &#8599;</a></p>
+    </div>
+  </div>
 
   <section class="references-section">
     <div class="col">
@@ -421,5 +480,33 @@
   </div>
 </footer>
 
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+<script async src="https://www.instagram.com/embed.js"></script>
+<script>
+function openVideoModal(evt, type, url) {
+  evt.preventDefault();
+  var modal = document.getElementById('video-modal');
+  var content = document.getElementById('video-modal-content');
+  var fallback = document.getElementById('video-modal-fallback-link');
+  fallback.href = url;
+  if (type === 'x') {
+    content.innerHTML = '<blockquote class="twitter-tweet"><a href="' + url + '"></a></blockquote>';
+    if (window.twttr && window.twttr.widgets) { window.twttr.widgets.load(content); }
+  } else if (type === 'instagram') {
+    content.innerHTML = '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '" data-instgrm-version="14"></blockquote>';
+    if (window.instgrm) { window.instgrm.Embeds.process(); }
+  }
+  modal.classList.add('open');
+  return false;
+}
+function closeVideoModal() {
+  var modal = document.getElementById('video-modal');
+  modal.classList.remove('open');
+  document.getElementById('video-modal-content').innerHTML = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeVideoModal(); }
+});
+</script>
 </body>
 </html>
