@@ -196,7 +196,7 @@
   h2 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 16px; color: var(--field); letter-spacing: -0.005em; }
   p { line-height: 1.7; font-size: 16px; margin: 0 0 14px; color: var(--charcoal); }
 
-  .gallery-section { padding: 64px 24px; }
+  .gallery-section { padding: 64px 24px; background: var(--chalk); }
   .gallery-section h2 { max-width: 1400px; margin: 0 auto 8px; font-size: 26px; }
   .gallery-sub { max-width: 1400px; margin: 0 auto 28px; color: var(--charcoal-dim); font-size: 15px; }
   .gallery {
@@ -242,6 +242,10 @@
   .video-item-arrow { color: var(--clay); font-weight: 600; }
 
   .coach-grid { display: grid; gap: 12px; margin-top: 4px; }
+  .color-band { position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw; padding: 48px 0; border-bottom: none; }
+  .about-band { background: var(--chalk); }
+  .academics-band { background: var(--paper); }
+  .videos-band { background: var(--paper); }
   .references-section { background: var(--field-dark); position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; width: 100vw; padding: 48px 0; border-bottom: none; }
   .references-section h2 { color: var(--chalk); }
   .references-section .col { padding: 0 32px; }
@@ -287,6 +291,7 @@
   </div>
 </div>
 
+<div class="color-band about-band">
 <div class="col-wide profile">
   <div class="profile-grid">
     <div class="profile-photo">
@@ -309,11 +314,14 @@
   </div>
 </div>
 
-<div class="col">
-  <section>
-    <h2>Academics</h2>
-    <p>3.96 unweighted GPA. Planning to study mechanical engineering at the next level.</p>
-  </section>
+<div class="color-band academics-band">
+  <div class="col">
+    <section style="border-bottom:none; padding:0;">
+      <h2>Academics</h2>
+      <p>3.96 unweighted GPA. Planning to study mechanical engineering at the next level.</p>
+    </section>
+  </div>
+</div>
 </div>
 
 <section class="gallery-section">
@@ -346,7 +354,8 @@
 </section>
 
 <main class="col">
-  <section>
+  <section class="color-band videos-band">
+    <div class="col">
     <h2>Watch Noah Play</h2>
     <div class="video-grid-wrap">
       <div class="video-grid">
@@ -421,6 +430,7 @@
     <div class="video-card" style="margin-top:18px;">
       <p>More game film posted regularly on Noah's Twitter.</p>
       <a class="btn" href="https://twitter.com/noahdeason22" target="_blank" rel="noopener">@noahdeason22</a>
+    </div>
     </div>
   </section>
 
