@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noah Deason — CF/1B, Class of 2027</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --field: #0a1f44;
+    --field-2: #123262;
+    --field-dark: #071531;
+    --clay: #b5952f;
+    --gold: #d4b13e;
+    --paper: #f4f5f7;
+    --paper-line: #e1e4e9;
+    --charcoal: #262a30;
+    --charcoal-dim: #636973;
+    --chalk: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--charcoal);
+    font-family: 'Source Sans 3', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+
+  .col { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+  .col-wide { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+
+  .hero {
+    position: relative;
+    height: min(78vh, 640px);
+    min-height: 420px;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7,21,49,0.15) 0%, rgba(7,21,49,0.55) 65%, rgba(7,21,49,0.92) 100%);
+  }
+  .hero-text {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 1;
+    padding: 0 32px 44px;
+    color: var(--chalk);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); display: inline-block; }
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(38px, 8vw, 62px);
+    line-height: 0.98;
+    margin: 12px 0 8px;
+    letter-spacing: -0.015em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  }
+  .subline { font-size: 16px; color: #cdd5e0; margin: 0; line-height: 1.5; max-width: 44ch; }
+  .subline strong { color: var(--chalk); font-weight: 600; }
+
+  .headline-stats { display: flex; flex-wrap: wrap; gap: 22px; margin: 14px 0 0; max-width: 480px; }
+  @media (max-width: 640px) {
+    .headline-stats { gap: 14px 20px; }
+  }
+  .headline-stat { display: flex; flex-direction: column; }
+  .headline-stat-num { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 22px; color: var(--chalk); line-height: 1; }
+  .headline-stat-label { font-size: 11px; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+
+  .team-badges { display: flex; gap: 16px; align-items: center; margin: 20px 0 0; }
+  .badge { width: 100px; height: 100px; flex: 0 0 100px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 3px solid var(--chalk); background: var(--chalk); object-fit: cover; }
+  @media (max-width: 640px) {
+    .team-badges { gap: 10px; }
+    .badge { width: 64px; height: 64px; flex-basis: 64px; border-width: 2px; }
+  }
+
+  .footer-anchor { flex: 0 0 auto; width: 220px; height: 220px; border-radius: 50%; box-shadow: 0 8px 26px rgba(0,0,0,0.45); border: 3px solid rgba(255,255,255,0.18); background: var(--chalk); object-fit: cover; }
+  @media (max-width: 1100px) {
+    .footer-anchor { width: 160px; height: 160px; }
+  }
+  @media (max-width: 760px) {
+    .footer-anchor { width: 110px; height: 110px; }
+  }
+
+  .featured-video-wrap { position: relative; z-index: 2; margin-top: 32px; }
+  .featured-video {
+    display: block; position: relative; border-radius: 16px; overflow: hidden;
+    height: 200px; text-decoration: none;
+    box-shadow: 0 20px 40px -16px rgba(10,20,40,0.5);
+    transition: transform 0.2s ease;
+  }
+  .featured-video:hover { transform: translateY(-2px); }
+  .featured-video-thumb { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); }
+  .featured-video-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(7,21,49,0.15) 0%, rgba(7,21,49,0.75) 100%);
+  }
+  .featured-video-play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .featured-video:hover .featured-video-play { transform: translate(-50%, -60%) scale(1.08); background: var(--gold); }
+  .play-icon { color: var(--field); font-size: 22px; margin-left: 4px; }
+  .featured-video:hover .play-icon { color: var(--field-dark); }
+  .featured-video-caption {
+    position: absolute; left: 20px; right: 20px; bottom: 16px; color: var(--chalk);
+  }
+  .featured-video-eyebrow {
+    display: block; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px;
+  }
+  .featured-video-title {
+    display: block; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 19px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+
+  .profile { padding-top: 64px; padding-bottom: 8px; }
+  .profile-grid { display: block; }
+  .profile-photo { border-radius: 16px; overflow: hidden; box-shadow: 0 24px 48px -20px rgba(10,20,40,0.35); }
+  .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .profile-copy h2 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 24px; margin: 0 0 16px; color: var(--field); letter-spacing: -0.005em; }
+  .profile-copy h3 { font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 16px; margin: 28px 0 10px; color: var(--clay); letter-spacing: 0.01em; text-transform: uppercase; }
+  .profile-copy h3:first-of-type { margin-top: 0; }
+  .profile-copy p { line-height: 1.7; font-size: 16px; margin: 0 0 14px; color: var(--charcoal); }
+  .profile-copy p:last-child { margin-bottom: 0; }
+  @media (max-width: 760px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .profile-photo { max-width: 300px; margin: 0 auto; }
+  }
+
+  main { padding: 8px 0 8px; }
+  section { padding: 40px 0; border-bottom: 1px solid var(--paper-line); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 16px; color: var(--field); letter-spacing: -0.005em; }
+  p { line-height: 1.7; font-size: 16px; margin: 0 0 14px; color: var(--charcoal); }
+
+  .gallery-section { padding: 48px 32px; }
+  .gallery-section h2 { max-width: 900px; margin-left: auto; margin-right: auto; }
+  .gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 170px;
+    grid-auto-flow: dense;
+    gap: 8px;
+  }
+  .gallery a { display: block; overflow: hidden; border-radius: 10px; position: relative; grid-column: span 1; grid-row: span 1; }
+  .gallery a.wide { grid-column: span 2; }
+  .gallery a.tall { grid-row: span 2; }
+  .gallery a.big { grid-column: span 2; grid-row: span 2; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s ease; }
+  .gallery a:hover img { transform: scale(1.04); }
+  @media (max-width: 700px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 130px; }
+    .gallery a.tall { grid-row: span 1; }
+    .gallery a.wide, .gallery a.big { grid-column: span 2; }
+    .gallery a.big { grid-row: span 1; }
+  }
+
+  .video-card {
+    background: linear-gradient(145deg, #ffffff, #fafbfc);
+    border: 1px solid var(--paper-line);
+    box-shadow: 0 10px 24px -14px rgba(10,20,40,0.18);
+    border-radius: 14px; padding: 22px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+    position: relative;
+  }
+  .video-card::before { content: ""; position: absolute; left: 0; top: 14px; bottom: 14px; width: 4px; border-radius: 0 4px 4px 0; background: linear-gradient(180deg, var(--gold), var(--clay)); }
+  .video-card p { margin: 0; padding-left: 6px; }
+  .video-card a.btn {
+    background: linear-gradient(155deg, var(--field-2), var(--field));
+    color: var(--chalk); text-decoration: none; font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 15px;
+    padding: 11px 22px; border-radius: 8px; white-space: nowrap;
+    box-shadow: 0 6px 16px -6px rgba(10,31,68,0.5);
+  }
+
+  .video-list { display: grid; gap: 10px; }
+  .video-item {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--chalk); border: 1px solid var(--paper-line); border-radius: 10px;
+    padding: 14px 18px; text-decoration: none; color: var(--charcoal);
+    box-shadow: 0 4px 14px -10px rgba(10,20,40,0.2);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .video-item:hover { border-color: var(--gold); transform: translateX(2px); }
+  .video-item-title { font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 15px; }
+  .video-item-arrow { color: var(--clay); font-weight: 600; }
+
+  .coach-grid { display: grid; gap: 12px; margin-top: 4px; }
+  .coach { background: var(--chalk); border: 1px solid var(--paper-line); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--charcoal-dim); line-height: 1.55; box-shadow: 0 4px 14px -10px rgba(10,20,40,0.2); }
+  .coach strong { color: var(--charcoal); font-weight: 600; }
+  .coach a { color: var(--field-2); }
+
+  footer { position: relative; background: linear-gradient(160deg, var(--field-dark), #050f24); color: var(--chalk); padding: 48px 40px; margin-top: 8px; }
+  .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1500px; margin: 0 auto; }
+  @media (max-width: 900px) {
+    .footer-row { gap: 30px; }
+  }
+  @media (max-width: 640px) {
+    .footer-row { flex-direction: column; gap: 24px; justify-content: center; }
+  }
+  footer h2 { color: var(--chalk); }
+  .contact-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
+  .contact-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 20px; flex: 1; min-width: 200px; }
+  .contact-item a { color: var(--chalk); font-family: 'Oswald', sans-serif; font-weight: 500; font-size: 18px; text-decoration: none; }
+  .contact-item a:hover { color: var(--gold); }
+  .contact-label { display: block; font-size: 11px; color: var(--gold); letter-spacing: 0.04em; margin-bottom: 5px; }
+  .foot-note { margin-top: 30px; font-size: 13px; color: #7986a0; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/hero-celebration.jpg" alt="Klein Collins baseball team celebrating a walk-off win at Tiger Field">
+  <div class="hero-text">
+    <span class="eyebrow">Center Field / First Base &middot; Class of 2027</span>
+    <h1>Noah Deason</h1>
+    <p class="subline">Klein Collins HS, Klein, TX &middot; <strong>Houston Wildcatters</strong></p>
+    <div class="headline-stats">
+      <div class="headline-stat"><span class="headline-stat-num">6'6"</span><span class="headline-stat-label">Height</span></div>
+      <div class="headline-stat"><span class="headline-stat-num">190</span><span class="headline-stat-label">Weight</span></div>
+      <div class="headline-stat"><span class="headline-stat-num">6.54</span><span class="headline-stat-label">60-Yard</span></div>
+      <div class="headline-stat"><span class="headline-stat-num">3.53</span><span class="headline-stat-label">3rd&ndash;Home</span></div>
+      <div class="headline-stat"><span class="headline-stat-num">3.96</span><span class="headline-stat-label">GPA</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="col-wide profile">
+  <div class="profile-grid">
+    <div class="profile-copy">
+      <h2>About</h2>
+      <h3>Faith &amp; Family</h3>
+      <p>Noah lives for Jesus Christ. His faith is the foundation of who he is and shapes how he treats people, approaches challenges, and lives his life. His priorities are simple: God, Family, School, and Baseball.</p>
+      <p>Family is a huge part of who Noah is. He is close with his sister Alyssa, his parents, Megan and Shane, and his grandparents. He enjoys being at home with family and friends. Noah is a very caring person, a loving son and brother, a loyal friend, and a good teammate and leader in the dugout.</p>
+      <h3>School, Work &amp; Character</h3>
+      <p>School is extremely important to Noah. He takes his responsibilities as a student very seriously, carries a 3.96 GPA on a 4.0 scale, and plans to pursue a bachelor's degree in mechanical engineering.</p>
+      <p>Noah also finds time to work and earn his own money. He and his dad, Shane, work together in a local family-owned operation performing preventative maintenance and mechanical repairs on home standby generators. The work reflects his mechanical mindset, work ethic, and ability to figure things out and make things happen.</p>
+      <p>Baseball has been a huge part of Noah's life since he was five years old. A 2027 senior and four-year letterman at Klein Collins High School, Noah has competed at the highest level throughout most of his baseball career. While baseball is a huge part of his life, it does not define him. His faith, family, friendships, character, and work ethic are the foundation of the young man he has become.</p>
+      <p>On the baseball field, Noah stands 6'6", bats from the right side, and plays center field. He has a plus bat, shows power, and consistently produces hits for extra bases. He brings excellent speed as well, running a 6.54 60. Noah's speed and baserunning instincts make him a legitimate threat and give him the ability to change the outcome of games.</p>
+      <p>Noah started his high school baseball career as a catcher, where he developed an extremely strong baseball IQ, but due to his growth, has chosen to transition to center field. Noah sees the game differently, understands situations quickly, anticipates well, and puts himself in good positions to make an impact. His instincts show up in his defensive reads, baserunning, positioning, and in-game decision-making. His combination of size, speed, range, and instincts allows him to cover more ground and make tough plays in the gaps. Noah moves exceptionally well and has the ability to impact the game on both sides of the baseball.</p>
+      <p>Noah plays for the Houston Wildcatters during the summer, competing against some of the highest-level players from across the country.</p>
+      <p>Noah works hard to get better, whether he's on the field, in the weight room, or in the batting cage. Noah plays the game the right way all the time, which is all out.</p>
+    </div>
+  </div>
+</div>
+
+<section class="gallery-section">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" target="_blank" class="big"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-contact-swing.jpg" alt="Noah Deason making contact at the plate"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-stance-closeup.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-stance-closeup.jpg" alt="Noah Deason batting stance close-up"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-night-slide.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-night-slide.jpg" alt="Noah Deason sliding into second base"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" target="_blank" class="wide"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-pregame-huddle.jpg" alt="Klein Collins team gathered on the field"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" target="_blank" class="wide"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Teammates under the Tiger Field scoreboard at night"></a>
+    <a href="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-sprint-fistpump.jpg" target="_blank"><img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-sprint-fistpump.jpg" alt="Noah Deason sprinting the bases with a fist pump"></a>
+  </div>
+</section>
+
+<main class="col">
+  <section>
+    <h2>Watch Noah Play</h2>
+    <div class="featured-video-wrap" style="margin-top:0;">
+      <a class="featured-video" href="https://www.instagram.com/p/DWFzHQ3kpzs/" target="_blank" rel="noopener">
+        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/g-scoreboard-mood.jpg" alt="Klein Collins Tiger Field at night" class="featured-video-thumb">
+        <div class="featured-video-overlay"></div>
+        <div class="featured-video-play">
+          <span class="play-icon">&#9654;</span>
+        </div>
+        <div class="featured-video-caption">
+          <span class="featured-video-eyebrow">Watch</span>
+          <span class="featured-video-title">The Walk-Off &mdash; Season-Defining Win</span>
+        </div>
+      </a>
+    </div>
+    <div class="video-list" style="margin-top:18px;">
+      <a class="video-item" href="https://x.com/NoahDeason22/status/2035052092675825761" target="_blank" rel="noopener">
+        <span class="video-item-title">Walk-Off Hit Seals District Win</span>
+        <span class="video-item-arrow">&rarr;</span>
+      </a>
+      <a class="video-item" href="https://x.com/NoahDeason22/status/1894215015764209886" target="_blank" rel="noopener">
+        <span class="video-item-title">Ripping a Double vs. Cy Woods</span>
+        <span class="video-item-arrow">&rarr;</span>
+      </a>
+      <a class="video-item" href="https://x.com/NoahDeason22/status/2032679424714232311" target="_blank" rel="noopener">
+        <span class="video-item-title">Battling Back: Two-Strike Liner &amp; Sac Bunt</span>
+        <span class="video-item-arrow">&rarr;</span>
+      </a>
+      <a class="video-item" href="https://x.com/NoahDeason22/status/2052561639719727514" target="_blank" rel="noopener">
+        <span class="video-item-title">Locked In: Clean Line-Drive Single</span>
+        <span class="video-item-arrow">&rarr;</span>
+      </a>
+      <a class="video-item" href="https://x.com/NoahDeason22/status/2073880449387024766" target="_blank" rel="noopener">
+        <span class="video-item-title">Game-Changing Speed: 3.53 Home to Third</span>
+        <span class="video-item-arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="video-card" style="margin-top:12px;">
+      <p>More game film posted regularly on Noah's Twitter.</p>
+      <a class="btn" href="https://twitter.com/noahdeason22" target="_blank" rel="noopener">@noahdeason22</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Academics</h2>
+    <p>3.96 unweighted GPA. Planning to study mechanical engineering at the next level.</p>
+  </section>
+
+  <section>
+    <h2>References</h2>
+    <div class="coach-grid">
+      <div class="coach">
+        <strong>Chris Griffin</strong> &mdash; Head Coach, Klein Collins High School<br>
+        (713) 703-4017 &middot; <a href="mailto:jgriffin1@kleinisd.net">jgriffin1@kleinisd.net</a>
+      </div>
+      <div class="coach">
+        <strong>Tyler King</strong> &mdash; Director of Baseball Recruitment, Houston Wildcatters<br>
+        (713) 557-1026 &middot; <a href="mailto:tyler.king@houstonwildcatters.com">tyler.king@houstonwildcatters.com</a>
+      </div>
+      <div class="coach">
+        <strong>Coach Jose Flores</strong> &mdash; Head Coach, Houston Wildcatters
+      </div>
+      <div class="coach">
+        <strong>Coach Auntwan Riggins</strong> &mdash; Personal Instructor<br>
+        (832) 372-8514
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-row">
+    <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-kleincollins.jpg" alt="Klein Collins Tigers Baseball logo" class="footer-anchor">
+    <div class="col" style="margin:0; padding:0; max-width:640px;">
+      <h2>Contact Noah</h2>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+18324324815">(832) 432-4815</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:noahrdeason1@gmail.com">noahrdeason1@gmail.com</a>
+        </div>
+      </div>
+      <p class="foot-note">Noah Deason &middot; Class of 2027 &middot; CF/1B</p>
+    </div>
+    <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-wildcatters.png" alt="Houston Wildcatters Baseball logo" class="footer-anchor">
+  </div>
+</footer>
+
+</body>
+</html>
