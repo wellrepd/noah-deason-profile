@@ -104,16 +104,25 @@
     .badge { width: 64px; height: 64px; flex-basis: 64px; border-width: 2px; }
   }
 
-  .footer-logos { display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; margin-bottom: 36px; }
-  .footer-logo-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-  .footer-logo-item span { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold); text-align: center; }
-  .footer-anchor { flex: 0 0 auto; width: 187px; height: 187px; border-radius: 50%; box-shadow: 0 8px 26px rgba(0,0,0,0.45); border: 3px solid rgba(255,255,255,0.18); background: var(--chalk); object-fit: cover; }
-  @media (max-width: 1100px) {
-    .footer-anchor { width: 136px; height: 136px; }
+  .footer-band { display: flex; align-items: center; justify-content: center; gap: 44px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; }
+  .footer-logo-stack { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+  .footer-logo-stack.right { align-items: center; }
+  .footer-badge { width: 64px; height: 64px; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,0.4); border: 2px solid rgba(255,255,255,0.15); background: var(--chalk); object-fit: cover; }
+  .footer-noah-logo { background: var(--chalk); border-radius: 10px; padding: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.4); display: inline-block; }
+  .footer-noah-logo img { display: block; height: 64px; width: auto; }
+  .footer-center { flex: 1 1 320px; max-width: 420px; text-align: center; }
+  .footer-center h2 { font-size: 17px; margin: 0 0 10px; }
+  .footer-center .contact-row { justify-content: center; gap: 10px; }
+  .footer-center .contact-item { padding: 8px 14px; min-width: 0; flex: 0 1 auto; }
+  .footer-center .foot-note { margin-top: 10px; font-size: 12px; }
+  @media (max-width: 900px) {
+    .footer-band { gap: 24px; }
+    .footer-badge { width: 50px; height: 50px; }
+    .footer-noah-logo img { height: 50px; }
   }
-  @media (max-width: 760px) {
-    .footer-logos { gap: 22px; }
-    .footer-anchor { width: 94px; height: 94px; }
+  @media (max-width: 640px) {
+    .footer-band { flex-direction: column; }
+    .footer-center { order: -1; margin-bottom: 6px; }
   }
 
   .featured-video-wrap { position: relative; z-index: 2; margin-top: 32px; }
@@ -223,7 +232,7 @@
   .coach strong { color: var(--charcoal); font-weight: 600; }
   .coach a { color: var(--field-2); }
 
-  footer { position: relative; background: linear-gradient(160deg, var(--field-dark), #050f24); color: var(--chalk); padding: 48px 40px; margin-top: 8px; }
+  footer { position: relative; background: linear-gradient(160deg, var(--field-dark), #050f24); color: var(--chalk); padding: 28px 32px; margin-top: 8px; }
   .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1500px; margin: 0 auto; }
   @media (max-width: 900px) {
     .footer-row { gap: 30px; }
@@ -382,33 +391,28 @@
 </main>
 
 <footer>
-  <div class="col" style="max-width:900px;">
-    <div class="footer-logos">
-      <div class="footer-logo-item">
-        <img src="images/crest-240.png" alt="Noah Deason personal logo" class="footer-anchor" style="object-fit:contain; padding:24px;">
-        <span>Noah Deason</span>
-      </div>
-      <div class="footer-logo-item">
-        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-kleincollins.jpg" alt="Klein Collins Tigers Baseball logo" class="footer-anchor">
-        <span>Klein Collins Baseball</span>
-      </div>
-      <div class="footer-logo-item">
-        <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-wildcatters.png" alt="Houston Wildcatters Baseball logo" class="footer-anchor">
-        <span>Houston Wildcatters</span>
-      </div>
+  <div class="footer-band">
+    <div class="footer-logo-stack">
+      <div class="footer-noah-logo"><img src="images/crest-240.png" alt="Noah Deason personal logo"></div>
+      <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-kleincollins.jpg" alt="Klein Collins Tigers Baseball logo" class="footer-badge">
     </div>
-    <h2>Contact Noah</h2>
-    <div class="contact-row">
-      <div class="contact-item">
-        <span class="contact-label">Phone</span>
-        <a href="tel:+18324324815">(832) 432-4815</a>
+    <div class="footer-center">
+      <h2>Contact Noah</h2>
+      <div class="contact-row">
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <a href="tel:+18324324815">(832) 432-4815</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:noahrdeason1@gmail.com">noahrdeason1@gmail.com</a>
+        </div>
       </div>
-      <div class="contact-item">
-        <span class="contact-label">Email</span>
-        <a href="mailto:noahrdeason1@gmail.com">noahrdeason1@gmail.com</a>
-      </div>
+      <p class="foot-note">Noah Deason &middot; Class of 2027 &middot; CF/1B</p>
     </div>
-    <p class="foot-note">Noah Deason &middot; Class of 2027 &middot; CF/1B</p>
+    <div class="footer-logo-stack right">
+      <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/badge-wildcatters.png" alt="Houston Wildcatters Baseball logo" class="footer-badge">
+    </div>
   </div>
 </footer>
 
