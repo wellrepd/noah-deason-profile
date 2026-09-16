@@ -74,8 +74,8 @@
     gap: 10px;
   }
   .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--gold); display: inline-block; }
-  .crest-mark { position: absolute; top: 20px; left: 20px; z-index: 2; width: 56px; height: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.45)); }
-  @media (max-width: 640px) { .crest-mark { width: 42px; top: 14px; left: 14px; } }
+  .hero img.crest-mark { position: absolute; top: 20px; left: 20px; z-index: 2; width: 56px; height: auto; max-width: 56px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.45)); }
+  @media (max-width: 640px) { .hero img.crest-mark { width: 42px; max-width: 42px; top: 14px; left: 14px; } }
   h1 {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
