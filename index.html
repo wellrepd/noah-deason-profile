@@ -66,6 +66,21 @@
     inset: 0;
     background: linear-gradient(180deg, rgba(7,21,49,0.15) 0%, rgba(7,21,49,0.55) 65%, rgba(7,21,49,0.92) 100%);
   }
+  .hero-crest {
+    position: absolute;
+    top: 18px;
+    left: 24px;
+    z-index: 2;
+    height: 56px !important;
+    width: auto !important;
+    object-fit: contain !important;
+    background: var(--chalk);
+    border-radius: 10px;
+    padding: 5px;
+  }
+  @media (max-width: 640px) {
+    .hero-crest { height: 44px !important; top: 14px; left: 16px; }
+  }
   .hero-text {
     position: absolute;
     left: 0; right: 0; bottom: 0;
@@ -325,6 +340,7 @@
 
 <div class="hero">
   <img src="https://noah-deason-profile-fk9wlo1zi-shane-deasons-projects.vercel.app/images/hero-celebration.jpg" alt="Klein Collins baseball team celebrating a walk-off win at Tiger Field">
+  <img class="hero-crest" src="images/crest-240.png" alt="Noah Deason personal crest">
   <div class="hero-text">
     <h1>Noah Deason</h1>
     <p class="identity-secondary">CF / 1B | Class of 2027</p>
