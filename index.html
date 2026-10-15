@@ -631,12 +631,104 @@
     }
   });
 </script>
+<script>
+  // Layer 4: richer visit signals, all through the same noahTrack helper so
+  // every event carries the ?src= code from the link. No cookies and no
+  // personal data: referrer host, device size, coarse timezone, how far they
+  // scrolled, how long the page was in view, which sections, photos and videos
+  // they opened, and which outbound links they clicked.
+  (function () {
+    if (typeof noahTrack !== 'function') return;
+    function host(u) { try { return new URL(u, location.href).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+    function base(u) { try { return String(u).split('?')[0].split('/').pop().slice(0, 80); } catch (e) { return ''; } }
+
+    // site_open: once per page load
+    var returning = false;
+    try { returning = !!localStorage.getItem('noah_seen'); localStorage.setItem('noah_seen', '1'); } catch (e) {}
+    var w = window.innerWidth || 0;
+    var tz = '';
+    try { tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').slice(0, 40); } catch (e) {}
+    noahTrack('site_open', {
+      from: host(document.referrer) || 'direct',
+      returning: returning,
+      screen: w < 600 ? 'phone' : (w < 1024 ? 'tablet' : 'desktop'),
+      lang: (navigator.language || '').slice(0, 10),
+      tz: tz
+    });
+
+    // scroll depth: 25 / 50 / 75 / 100 percent, once each
+    var depths = { 25: false, 50: false, 75: false, 100: false }, maxDepth = 0;
+    function onScroll() {
+      var d = document.documentElement, h = d.scrollHeight - window.innerHeight;
+      if (h <= 0) return;
+      var pct = Math.min(100, Math.round(100 * (window.pageYOffset || d.scrollTop) / h));
+      if (pct > maxDepth) maxDepth = pct;
+      [25, 50, 75, 100].forEach(function (m) {
+        if (!depths[m] && pct >= m - (m === 100 ? 2 : 0)) { depths[m] = true; noahTrack('scroll_depth', { pct: m }); }
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // time in view: 15 / 30 / 60 / 120 / 300 seconds, counted only while visible
+    var seconds = 0, marks = [15, 30, 60, 120, 300], fired = {};
+    setInterval(function () {
+      if (document.visibilityState !== 'visible') return;
+      seconds += 1;
+      if (marks.indexOf(seconds) !== -1 && !fired[seconds]) { fired[seconds] = true; noahTrack('time_on_page', { sec: seconds }); }
+    }, 1000);
+
+    // sections as they come into view
+    if (window.IntersectionObserver) {
+      var names = [
+        ['.videos-band', 'videos'], ['.x-follow-band', 'follow_on_x'], ['.gallery-section', 'gallery'],
+        ['.references-section', 'references'], ['footer', 'footer']
+      ];
+      names.forEach(function (pair) {
+        var el = document.querySelector(pair[0]);
+        if (!el) return;
+        var done = false;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !done) { done = true; noahTrack('section_view', { section: pair[1] }); io.disconnect(); }
+          });
+        }, { threshold: 0.35 });
+        io.observe(el);
+      });
+    }
+
+    // which photo was opened
+    document.querySelectorAll('.gallery a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var img = a.querySelector('img');
+        noahTrack('photo_open', { photo: base((img && (img.getAttribute('src') || '')) || a.getAttribute('href') || '') });
+      });
+    });
+
+    // any link that leaves the site
+    document.addEventListener('click', function (ev) {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (!a) return;
+      var h = host(a.href);
+      if (h && h !== location.hostname.replace(/^www\./, '') && /^https?:/i.test(a.href)) noahTrack('outbound_click', { to: h });
+    }, true);
+
+    // copied text (phone, email) and leaving the page
+    document.addEventListener('copy', function () { noahTrack('text_copy'); });
+    var left = false;
+    function leave() {
+      if (left) return; left = true;
+      noahTrack('page_exit', { sec: seconds, scroll: maxDepth });
+    }
+    window.addEventListener('pagehide', leave);
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') leave(); else left = false; });
+  })();
+</script>
 <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
 <script async src="https://www.instagram.com/embed.js"></script>
 <script>
 function openVideoModal(evt, type, url) {
   evt.preventDefault();
-  if (typeof noahTrack === 'function') { noahTrack('video_play', { source: type }); }
+  if (typeof noahTrack === 'function') { noahTrack('video_play', { source: type, video: String(url || '').split('?')[0].slice(0, 120) }); }
   var modal = document.getElementById('video-modal');
   var content = document.getElementById('video-modal-content');
   var fallback = document.getElementById('video-modal-fallback-link');
